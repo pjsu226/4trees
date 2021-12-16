@@ -55,8 +55,8 @@ public class ReportsBarChart extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /**
-         * //R.layout.activity_register) : This will set activity_register.xml layout as UI of your app.
-         * it will helps system to easily access the layout from resources/layout directory.
+         * //R.layout.activity_register) : activity_register.xml 레이아웃이 앱의 UI로 설정됩니다.
+         * 시스템이 리소스/레이아웃 디렉토리에서 레이아웃에 쉽게 액세스 할 수 있도록 도와줍니다.
          */
         setContentView(R.layout.activity_bar_chart);
         getSupportActionBar().hide();
@@ -162,9 +162,9 @@ public class ReportsBarChart extends AppCompatActivity {
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(true);
         //barChart.getDescription().setEnabled(false);
-        // if more than 60 entries are displayed in the chart, no values will be
+        // 차트에 60개 이상의 항목이 표시되면 값이 표시 되지 않습니다.
         barChart.setMaxVisibleValueCount(60);
-        // scaling can now only be done on x- and y-axis separately
+        // 스케일링은 X축과 Y축에서만 개별적으로 수행 가능
         barChart.setPinchZoom(false);
         barChart.setDrawGridBackground(false);
         barChart.getDescription().setEnabled(false);
