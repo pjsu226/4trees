@@ -1,5 +1,6 @@
 package com.example.budgetreceipt.utilities.data.uicamera;
 
+
 import android.Manifest;
 import android.content.Context;
 import android.content.res.Configuration;
