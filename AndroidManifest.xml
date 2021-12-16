@@ -1,0 +1,116 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.budgetreceipt"
+    android:installLocation="auto">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera"  android:required="false" />
+    <uses-feature android:name="android.graphics.Camera"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus" android:required="false"/>
+
+    <application
+        android:name="com.example.budgetreceipt.global.GlobalProperties"
+        android:allowBackup="true"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="false"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.example.budgetreceipt.activities.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/activity_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.budgetreceipt.activities.DocumentScannerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_gallery"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr"/>
+
+
+        <activity
+            android:name="com.example.budgetreceipt.activities.GalleryGridActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:largeHeap="true"
+            android:label="@string/title_activity_gallery"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name="com.example.budgetreceipt.charts_activities.ReportsPieChartActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.FullScreenViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.charts_activities.ReportsRadarChart"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.adapters.BillRecognizeAdapter"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.BillDialogActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.BillsListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.CategoriesActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.SuccessfullyLoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.example.budgetreceipt.charts_activities.ReportsBarChart"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.budgetreceipt.activities.Tesseract"/>
+        <activity
+            android:name="com.example.budgetreceipt.activities.HomeActivity"
+            android:screenOrientation="portrait"/>
+
+    </application>
+
+
+</manifest>
