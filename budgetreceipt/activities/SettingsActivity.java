@@ -319,7 +319,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * 모든 입력 편집 텍스트를 비우는 메소드
+     * 모든 입력 편집 텍스트를 비우는 메소드 
      */
 
     @Override
