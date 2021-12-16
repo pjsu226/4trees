@@ -74,7 +74,7 @@ public class DBcatch extends SQLiteOpenHelper {
     //---------------------------------------------------------------------------------------
     private static final String TABLE_BILLS = "bills";
 
-    // Bills 테이블 열 이름
+    // Bills 테이블 열 이름.
     private static final String COLUMN_BILL_ID = "bill_id";
     private static final String COLUMN_BILL_USER_ID = "user_id";
     private static final String COLUMN_DESCRIPTION = "description";
