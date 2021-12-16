@@ -52,6 +52,7 @@ public class Tesseract extends BaseActivity{
     }
 
 
+    
     private String extractText(Bitmap bitmap) {
         try {
             tessBaseApi = new TessBaseAPI();
