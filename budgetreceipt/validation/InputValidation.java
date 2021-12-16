@@ -1,18 +1,19 @@
 package com.example.budgetreceipt.validation;
 
 import android.content.Context;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class InputValidation {
     private Context context;
 
     /**
-     * constructor
      *
      * @param context
      */
@@ -21,7 +22,7 @@ public class InputValidation {
     }
 
     /**
-     * InputEditText가 채워져있는지 확인하는 메소드.
+     * InputEditText를 채우는 것을 확인하는 메소드입니다.
      *
      * @param textInputEditText
      * @param textInputLayout
@@ -53,7 +54,7 @@ public class InputValidation {
     }
 
     /**
-     * InputEditText에 이메일이 들어가 있는지 확인하는 메소드 .
+     * InputEditText는 올바른 email인지 확인하기 위한 메소드입니다.
      *
      * @param textInputEditText
      * @param textInputLayout
@@ -86,7 +87,7 @@ public class InputValidation {
     }
 
     /**
-     * 키보드 숨김 메소드
+     * 키보드를 Hide하는 메소드입니다.
      *
      * @param view
      */
