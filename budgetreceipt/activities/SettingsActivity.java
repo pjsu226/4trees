@@ -113,14 +113,14 @@ public class SettingsActivity extends AppCompatActivity {
                     textInputEditTextName.setText(u.getName());
                     textInputEditTextEmail.setText(u.getEmail());
                     checkEmailUsed = textViewEmail.getText().toString().trim();
-                    // if button is clicked, close the custom dialog
+                    // 버튼 입력시 사용자 대화 상자가 닫힘
                     appCompatButtonModify.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             postDataToSQLite();
                         }
                     });
-                    // if button is clicked, close the custom dialog
+                    // 버튼 입력시 사용자 대화 상자가 닫힘
                     appCompatTextViewCancelLink.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -156,14 +156,14 @@ public class SettingsActivity extends AppCompatActivity {
                 //-
                 initDialogViewsPass();
 
-                // if button is clicked, close the custom dialog
+                // 버튼 입력시 사용자 대화 상자가 닫힘
                 appCompatButtonModify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         postPassToSQL();
                     }
                 });
-                // if button is clicked, close the custom dialog
+                // 버튼 입력시 사용자 대화 상자가 닫힘
                 appCompatTextViewCancelLink.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -272,7 +272,7 @@ public class SettingsActivity extends AppCompatActivity {
         } else if (!dbCatch.checkUser(textInputEditTextEmail.getText().toString().trim())) {
             postDataToSQL();
         } else {
-            // Toast message to show error message that record already exists
+            // 레코드가 이미 있다는 오류 메시지를 토스트 메시지로 표시
             Toast toast = Toast.makeText(SettingsActivity.this, getString(R.string.error_email_exists), Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             ViewGroup group = (ViewGroup) toast.getView();
@@ -319,7 +319,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is to empty all input edit text
+     * 모든 입력 편집 텍스트를 비우는 메소드
      */
 
     @Override
