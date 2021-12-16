@@ -31,3 +31,4 @@ public class SquareFrameLayout extends FrameLayout {
         super.onMeasure(squareSpec, squareSpec);
     }
 }
+
