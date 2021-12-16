@@ -48,6 +48,7 @@ public class EasyCamera {
         start(activity, REQUEST_CAPTURE);
     }
 
+    
 
     public void start(@NonNull Activity activity, int requestCode) {
         activity.startActivityForResult(getIntent(activity), requestCode);
