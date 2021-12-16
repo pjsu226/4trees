@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     /**
-     * 이 메소드는 listener를 초기화 하는 것입니다.
+     * 이 메소드는 listeners를 초기화 하는 것입니다.
      */
     private void initListeners() {
         appCompatButtonLogin.setOnClickListener(this);
