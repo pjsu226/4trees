@@ -59,7 +59,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         /**
          * //R.layout.activity_register) : activity_register.xml layout은 앱의 UI가 됩니다.
-         * 시스템이 리소스/레이아웃 디렉토리에서 레이앙수에 쉽게 액세스 할수 있도록 도와줍니다.
+         * 시스템이 리소스/레이아웃 디렉토리에서 레이앙수에 쉽게 액세스 할수 있도록 도와줍니다
          */
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
