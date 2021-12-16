@@ -15,22 +15,22 @@ import java.util.List;
 
 public class DBcatch extends SQLiteOpenHelper {
 
-    // Database Version
+    // 데이터베이스 버전
     private static final int DATABASE_VERSION = 1;
 
-    // Database Name
+    // 데이터베이스 이름
     private static final String DATABASE_NAME = "ETracker.db";
     //---------------------------------------------------------------------------------------
-    // table name
+    // 테이블 이름
     private static final String TABLE_USER = "user";
 
-    // User Table Columns names
+    // user 테이블 열 이름
     private static final String COLUMN_USER_ID = "user_id";
     private static final String COLUMN_USER_NAME = "user_name";
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_PASSWORD = "user_password";
 
-    // create table sql query
+    // sql query로 테이블 만들기
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_USER_NAME + " TEXT,"
@@ -38,17 +38,17 @@ public class DBcatch extends SQLiteOpenHelper {
             + COLUMN_USER_PASSWORD + " TEXT" + ")";
     //---------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------
-    // table name
+    // 테이블 이름
     private static final String TABLE_SETTINGS = "settings";
 
-    // Settings Table Columns names
+    // settings 테이블 열 이름
     private static final String COLUMN_SETTINGS_ID = "settings_id";
     private static final String COLUMN_SETTINGS_USER_ID = "user_id";
     private static final String COLUMN_USER_PIE_CHART = "pie_chart";
     private static final String COLUMN_USER_BAR_CHART = "bar_chart";
     private static final String COLUMN_USER_RADAR_CHART = "radar_chart";
 
-    // create table sql query
+    // sql query로 테이블 만들기
     private String CREATE_TABLE_SETTINGS_TABLE = "CREATE TABLE " + TABLE_SETTINGS + "("
             + COLUMN_SETTINGS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_SETTINGS_USER_ID + " INTEGER,"
@@ -57,15 +57,15 @@ public class DBcatch extends SQLiteOpenHelper {
             + COLUMN_USER_BAR_CHART + " BOOLEAN,"
             + " FOREIGN KEY ("+COLUMN_SETTINGS_USER_ID+") REFERENCES "+TABLE_USER+"("+COLUMN_USER_ID+"));";
     //---------------------------------------------------------------------------------------
-    // table name
+    // 테이블 이름
     private static final String TABLE_CATEGORIES = "categories";
 
-    // Bills Table Columns names
+    // Bills 테이블 열 이름
     private static final String COLUMN_CATEGORY_ID = "category_id";
     private static final String COLUMN_CATEGORY_USER_ID = "user_ID";
     private static final String COLUMN_CATEGORY_NAME = "name";
 
-    // create table sql query
+    // sql query로 테이블 만들기
     private String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + TABLE_CATEGORIES + "("
             + COLUMN_CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + COLUMN_CATEGORY_USER_ID + " TEXT,"
@@ -74,7 +74,7 @@ public class DBcatch extends SQLiteOpenHelper {
     //---------------------------------------------------------------------------------------
     private static final String TABLE_BILLS = "bills";
 
-    // Bills Table Columns names
+    // Bills 테이블 열 이름
     private static final String COLUMN_BILL_ID = "bill_id";
     private static final String COLUMN_BILL_USER_ID = "user_id";
     private static final String COLUMN_DESCRIPTION = "description";
@@ -93,7 +93,7 @@ public class DBcatch extends SQLiteOpenHelper {
             + COLUMN_CATEGORY + " TEXT,"
             + " FOREIGN KEY ("+COLUMN_BILL_USER_ID+") REFERENCES "+TABLE_USER+"("+COLUMN_USER_ID+"));";
     //---------------------------------------------------------------------------------------
-    // drop table sql query
+    // sql query로 테이블 드랍
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
     private String DROP_BILLS_TABLE = "DROP TABLE IF EXISTS " + TABLE_BILLS;
     private String DROP_CATEGORIES_TABLE = "DROP TABLE IF EXISTS " + TABLE_CATEGORIES;
@@ -131,7 +131,7 @@ public class DBcatch extends SQLiteOpenHelper {
     }
     //---------------------------------------------------------------------------------------
     /**
-     * This method is to create user record
+     * 사용자 레코드를 생성하는 메소드
      *
      * @param user
      */
@@ -149,19 +149,19 @@ public class DBcatch extends SQLiteOpenHelper {
     }
 
     /**
-     * This method is to fetch all user and return the list of user records
+     * 모든 사용자를 가져오고 사용자 레코드 목록을 반환하는 메소드
      *
      * @return list
      */
     public List<User> getAllUser() {
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_USER_ID,
                 COLUMN_USER_EMAIL,
                 COLUMN_USER_NAME,
                 COLUMN_USER_PASSWORD
         };
-        // sorting orders
+        // 졍렬 
         String sortOrder =
                 COLUMN_USER_NAME + " ASC";
         List<User> userList = new ArrayList<User>();
@@ -183,7 +183,7 @@ public class DBcatch extends SQLiteOpenHelper {
                 sortOrder); //The sort order
 
 
-        // Traversing through all rows and adding to list
+        // 모든 행을 순회하고 목록에 추가
         if (cursor.moveToFirst()) {
             do {
                 User user = new User();
@@ -198,7 +198,7 @@ public class DBcatch extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        // return user list
+        // user list 리턴
         return userList;
     }
 
@@ -251,30 +251,30 @@ public class DBcatch extends SQLiteOpenHelper {
      */
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
-        // delete user record by id
+        // 아이디로 사용자 기록 삭제
         db.delete(TABLE_USER, COLUMN_USER_ID + " = ?",
                 new String[]{String.valueOf(user.getId())});
         db.close();
     }
 
     /**
-     * This method to check user exist or not
+     * 사용자의 존재 여부를 확인하는 방법
      *
      * @param email
      * @return true/false
      */
     public boolean checkUser(String email) {
 
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
+        // 선택 기준
         String selection = COLUMN_USER_EMAIL + " = ?";
 
-        // selection argument
+        // 선택 인수
         String[] selectionArgs = {email};
 
         // query user table with condition
@@ -310,15 +310,15 @@ public class DBcatch extends SQLiteOpenHelper {
      */
     public boolean checkUser(String email, String password) {
 
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
+        // 선택 기준
         String selection = COLUMN_USER_EMAIL + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
 
-        // selection arguments
+        // 선택 인수
         String[] selectionArgs = {email, password};
 
         // query user table with conditions
@@ -348,7 +348,7 @@ public class DBcatch extends SQLiteOpenHelper {
 
     public ArrayList<User> getUserByID(int userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         ArrayList<User> categoryUser = new ArrayList<User>();
 
         Cursor cursor = db.query(TABLE_USER, new String[] { COLUMN_USER_ID,
@@ -362,14 +362,14 @@ public class DBcatch extends SQLiteOpenHelper {
                 user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
                 user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 categoryUser.add(user);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return categoryUser;
     }
     //---------------------------------------------------------------------------------------
@@ -379,14 +379,14 @@ public class DBcatch extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_CATEGORY_USER_ID, category.getUserID());
         values.put(COLUMN_CATEGORY_NAME, category.getName());
-        // Inserting Row
+        // 행 삽입
         db.insert(TABLE_CATEGORIES, null, values);
         db.close();
     }
 
     public List<Category> getCategoriesByUserID(int userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         String sortOrder =
                 COLUMN_CATEGORY_ID;
         List<Category> categoryList = new ArrayList<Category>();
@@ -401,19 +401,19 @@ public class DBcatch extends SQLiteOpenHelper {
                 category.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ID))));
                 category.setUserID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_USER_ID))));
                 category.setName(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_NAME)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 categoryList.add(category);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return categoryList;
     }
     public List<Category> getCategsadoriesByUserID(int userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         String sortOrder =
                 COLUMN_CATEGORY_ID;
         List<Category> categoryList = new ArrayList<Category>();
@@ -428,24 +428,24 @@ public class DBcatch extends SQLiteOpenHelper {
                 category.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ID))));
                 category.setUserID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_USER_ID))));
                 category.setName(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_NAME)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 categoryList.add(category);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return categoryList;
     }
     public List<Category> getAllCategories() {
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_CATEGORY_ID,
                 COLUMN_CATEGORY_USER_ID,
                 COLUMN_CATEGORY_NAME,
         };
-        // sorting orders
+        // 정렬 순서
         String sortOrder =
                 COLUMN_CATEGORY_ID;
         List<Category> categoryList = new ArrayList<Category>();
@@ -466,27 +466,27 @@ public class DBcatch extends SQLiteOpenHelper {
                 null,       //filter by row groups
                 sortOrder); //The sort order
 
-        // Traversing through all rows and adding to list
+        // 모든 행을 순회하고 목록에 추가
         if (cursor.moveToFirst()) {
             do {
                 Category category = new Category();
                 category.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_ID))));
                 category.setUserID(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_USER_ID))));
                 category.setName(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY_NAME)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 categoryList.add(category);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return categoryList;
     }
 
     public void deleteCategory(int categoryId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        // delete category record by id
+        // id로 카테고리 레코드 삭제
         db.delete(TABLE_CATEGORIES, COLUMN_CATEGORY_ID + "=\"" + categoryId+"\"", null);
         db.close();
     }
@@ -505,15 +505,15 @@ public class DBcatch extends SQLiteOpenHelper {
 
     public boolean checkCategory(String category, String user_id) {
 
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_CATEGORY_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
+        // 선택 기준
         String selection = COLUMN_CATEGORY_NAME + " = ?" + " AND " + COLUMN_CATEGORY_USER_ID + " = ?";
-        // selection argument
+        // 선택 인수
         String[] selectionArgs = {category,user_id};
 
         // query user table with condition
@@ -552,13 +552,13 @@ public class DBcatch extends SQLiteOpenHelper {
         values.put(COLUMN_COMPANY_NAME, bill.getCompany_name());
         values.put(COLUMN_CATEGORY, bill.getCategory());
 
-        // Inserting Row
+        // 행 삽입
         db.insert(TABLE_BILLS, null, values);
         db.close();
     }
     public List<Bills> getBillsByUserID(int userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         List<Bills> billsList = new ArrayList<Bills>();
 
         Cursor cursor = db.query(TABLE_BILLS, new String[] { COLUMN_BILL_ID,
@@ -575,14 +575,14 @@ public class DBcatch extends SQLiteOpenHelper {
                 bills.setDateString(cursor.getString(cursor.getColumnIndex(COLUMN_DATE_STRING)));
                 bills.setCompany_name(cursor.getString(cursor.getColumnIndex(COLUMN_COMPANY_NAME)));
                 bills.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 billsList.add(bills);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return billsList;
     }
     public ArrayList<Bills> getMonthDateByUserID(int userID) {
@@ -606,20 +606,20 @@ public class DBcatch extends SQLiteOpenHelper {
             do {
                 Bills bills = new Bills();
                 bills.setAmount(cursor.getInt(cursor.getColumnIndex(tmpcol_monthly_total)));
-                bills.setDateString(cursor.getString(cursor.getColumnIndex(tmpcol_month_year))); //<<<<<<<<<< NOTE data is MM/YY (otherwise which date to use? considering result will be arbrirtaryy)
-                // Adding record to list
+                bills.setDateString(cursor.getString(cursor.getColumnIndex(tmpcol_month_year))); //<<<<<<<<<< 참고 데이터는 MM/YY입니다.
+                // 목록에 레코드 추가
                 listBillsDates.add(bills);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return listBillsDates;
     }
     public ArrayList<Bills> getBillByID(int bill_id){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         ArrayList<Bills> billsList = new ArrayList<Bills>();
 
         Cursor cursor = db.query(TABLE_BILLS, new String[] { COLUMN_BILL_ID,
@@ -636,14 +636,14 @@ public class DBcatch extends SQLiteOpenHelper {
                 bills.setDateString(cursor.getString(cursor.getColumnIndex(COLUMN_DATE_STRING)));
                 bills.setCompany_name(cursor.getString(cursor.getColumnIndex(COLUMN_COMPANY_NAME)));
                 bills.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 billsList.add(bills);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 반환
         return billsList;
     }
     public ArrayList<Bills> getYearDateByUserID(int userID) {
@@ -672,19 +672,19 @@ public class DBcatch extends SQLiteOpenHelper {
             do {
                 Bills bills = new Bills();
                 bills.setAmount(cursor.getInt(cursor.getColumnIndex(tmpcol_year_total)));
-                bills.setDateString(cursor.getString(cursor.getColumnIndex(tmpcol_month_year))); //<<<<<<<<<< NOTE data is MM/YY (considering result will be arbrirtaryy)
-                // Adding record to list
+                bills.setDateString(cursor.getString(cursor.getColumnIndex(tmpcol_month_year))); //<<<<<<<<<< 참고 데이터는 MM/YY입니다. (고려 결과는 임의적입니다.)
+                // 목록에 레코드 추가
                 listBillsDates.add(bills);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return listBillsDates;
     }
     public List<Bills> getAllBills() {
-        // array of columns to fetch
+        // 가져올 열의 배열
         String[] columns = {
                 COLUMN_BILL_ID,
                 COLUMN_BILL_USER_ID,
@@ -694,7 +694,7 @@ public class DBcatch extends SQLiteOpenHelper {
                 COLUMN_COMPANY_NAME,
                 COLUMN_CATEGORY
         };
-        // sorting orders
+        // 정렬 순서
         String sortOrder =
                 COLUMN_BILL_ID;
         List<Bills> billsList = new ArrayList<Bills>();
@@ -716,7 +716,7 @@ public class DBcatch extends SQLiteOpenHelper {
                 sortOrder); //The sort order
 
 
-        // Traversing through all rows and adding to list
+        // 모든 행을 순회하고 목록에 추가
         if (cursor.moveToFirst()) {
             do {
                 Bills bill = new Bills();
@@ -727,14 +727,14 @@ public class DBcatch extends SQLiteOpenHelper {
                 bill.setDateString(cursor.getString(cursor.getColumnIndex(COLUMN_DATE_STRING)));
                 bill.setCompany_name(cursor.getString(cursor.getColumnIndex(COLUMN_COMPANY_NAME)));
                 bill.setCategory(cursor.getString(cursor.getColumnIndex(COLUMN_CATEGORY)));
-                // Adding record to list
+                // 목록에 레코드 추가
                 billsList.add(bill);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return bills list
+        // bills list 리턴
         return billsList;
     }
 
@@ -761,7 +761,7 @@ public class DBcatch extends SQLiteOpenHelper {
     }
     //---------------------------------------------------------------------------------------
     /**
-     * This method is to create user record
+     * 사용자 레코드를 생성하는 메소드
      *
      * @param settings
      */
@@ -774,12 +774,12 @@ public class DBcatch extends SQLiteOpenHelper {
         values.put(COLUMN_USER_BAR_CHART, settings.isBarChart());
         values.put(COLUMN_USER_RADAR_CHART, settings.isRadarChart());
 
-        // Inserting Row
+        // 행 삽입
         db.insert(TABLE_SETTINGS, null, values);
         db.close();
     }
     /**
-     * This method to update user record
+     * 사용자 기록을 업데이트 하는 메소드
      *
      * @param settings
      */
@@ -799,7 +799,7 @@ public class DBcatch extends SQLiteOpenHelper {
 
     public ArrayList<Settings> getSettingsByID(int userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        // sorting orders
+        // 정렬 순서
         ArrayList<Settings> settingsArrayList = new ArrayList<Settings>();
 
         Cursor cursor = db.query(TABLE_SETTINGS, new String[] { COLUMN_SETTINGS_ID,
@@ -814,14 +814,14 @@ public class DBcatch extends SQLiteOpenHelper {
                 settings.setPieChart(cursor.getInt(cursor.getColumnIndex(COLUMN_USER_PIE_CHART))> 0);
                 settings.setRadarChart(cursor.getInt(cursor.getColumnIndex(COLUMN_USER_RADAR_CHART))> 0);
                 settings.setBarChart(cursor.getInt(cursor.getColumnIndex(COLUMN_USER_BAR_CHART)) > 0);
-                // Adding record to list
+                // 목록에 레코드 추가
                 settingsArrayList.add(settings);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
 
-        // return category list
+        // category list 리턴
         return settingsArrayList;
     }
 }
