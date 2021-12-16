@@ -21,7 +21,7 @@ public class InputValidation {
     }
 
     /**
-     * method to check InputEditText filled .
+     * InputEditText가 채워져있는지 확인하는 메소드.
      *
      * @param textInputEditText
      * @param textInputLayout
@@ -53,7 +53,7 @@ public class InputValidation {
     }
 
     /**
-     * method to check InputEditText has valid email .
+     * InputEditText에 이메일이 들어가 있는지 확인하는 메소드 .
      *
      * @param textInputEditText
      * @param textInputLayout
@@ -86,7 +86,7 @@ public class InputValidation {
     }
 
     /**
-     * method to Hide keyboard
+     * 키보드 숨김 메소드
      *
      * @param view
      */
