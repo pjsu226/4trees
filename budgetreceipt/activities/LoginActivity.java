@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(intentUserInter);
     }
     /**
-     * 이 메소드는 모든 입력 수정 텍스트를 비우는 것이다.
+     * 이 메소드는 모든 입력 수정 텍스트를 비우는 것이다..
      */
     private void emptyInputEditText() {
         textInputEditTextEmail.setText(null);
