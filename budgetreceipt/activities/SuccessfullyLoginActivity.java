@@ -41,7 +41,7 @@ public class SuccessfullyLoginActivity extends AppCompatActivity implements View
     }
 
     /**
-     * 이 메드는는 listeners를 초기화 하는 것입니다.
+     * 이 메소드는 listeners를 초기화 하는 것입니다.
      */
     private void initListeners() {
         appCompatButtonContinue.setOnClickListener(this);
