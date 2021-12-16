@@ -1,5 +1,6 @@
 package com.example.budgetreceipt.activities;
 
+
 import static com.example.budgetreceipt.utilities.data.helpers.Utils.addImageToGallery;
 import static com.example.budgetreceipt.utilities.data.helpers.Utils.decodeSampledBitmapFromUri;
 
