@@ -58,8 +58,8 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /**
-         * //R.layout.activity_register) : This will set activity_register.xml layout as UI of your app.
-         * it will helps system to easily access the layout from resources/layout directory.
+         * //R.layout.activity_register) : activity_register.xml layout은 앱의 UI가 됩니다.
+         * 시스템이 리소스/레이아웃 디렉토리에서 레이앙수에 쉽게 액세스 할수 있도록 도와줍니다.
          */
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
@@ -70,7 +70,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     }
 
     /**
-     * This method is to initialize views
+     * views 초기화 메소드
      */
     private void initViews() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
@@ -92,7 +92,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     }
 
     /**
-     * This method is to initialize listeners
+     * listeners 초기화 메소드
      */
     private void initListeners() {
         appCompatButtonRegister.setOnClickListener(this);
@@ -100,7 +100,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     }
 
     /**
-     * This method is to initialize objects to be used
+     * 사용할 개체 초기화 메소드
      */
     private void initObjects() {
         categoryList = new ArrayList<>();
@@ -114,7 +114,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
 
 
     /**
-     * This implemented method is to listen the click on view
+     * 클릭 수신 메소드
      *
      * @param v
      */
@@ -132,7 +132,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     }
 
     /**
-     * This method is to validate the input text fields and post data to SQLite
+     * 입력 텍스트 필드의 유효성을 검사하며 SQLite에 데이터를 넣는다.
      */
     private void postDataToSQLite() {
         if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
@@ -174,12 +174,12 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
 
 
         } else {
-            // Snack Bar to show error message that record already exists
+            // 레코드가 이미 있다는 메시지를 표시하는 스낵바
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
         }
     }
     /**
-     * This method is to empty all input edit text
+     * 모든 입력 편집 텍스트를 비우는 매소드
      */
     private void emptyInputEditText() {
         textInputEditTextName.setText(null);
@@ -188,48 +188,48 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
         textInputEditTextConfirmPassword.setText(null);
     }
     /**
-     * This method is to fetch all user records from SQLite
+     * SQLite에서 모든 사용자 카테고리를 가져오는 메소드
      */
     public void setDefault(){
-        if (!dbCatch.checkCategory("식&음료",retrivedUserID)) {
+        if (!dbCatch.checkCategory("음식&음료",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("식&음료");
+            category.setName("음식&음료");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Transportation",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("교통",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Transportation");
+            category.setName("교통");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Accommodation",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("숙박",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Accommodation");
+            category.setName("숙박");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Education",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("교육",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Education");
+            category.setName("교육");
             dbCatch.addCategory(category);
-        }  if (!dbCatch.checkCategory("Entertainment",retrivedUserID)) {
+        }  if (!dbCatch.checkCategory("오락",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Entertainment");
+            category.setName("오락");
             dbCatch.addCategory(category);
-        }  if (!dbCatch.checkCategory("Financial Services",retrivedUserID)) {
+        }  if (!dbCatch.checkCategory("금융",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Financial Services");
+            category.setName("금융");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Insurance",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("보험",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Insurance");
+            category.setName(보험");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Sport",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("스포츠",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Sport");
+            category.setName("스포츠");
             dbCatch.addCategory(category);
-        } if (!dbCatch.checkCategory("Telecommunication",retrivedUserID)) {
+        } if (!dbCatch.checkCategory("통신",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Telecommunication");
+            category.setName("통신");
             dbCatch.addCategory(category);
-        } if(!dbCatch.checkCategory("Others",retrivedUserID)) {
+        } if(!dbCatch.checkCategory("기타",retrivedUserID)) {
             category.setUserID(user_id);
-            category.setName("Others");
+            category.setName("기타");
             dbCatch.addCategory(category);
         }
     }
