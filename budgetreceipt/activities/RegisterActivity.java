@@ -92,7 +92,7 @@ public class RegisterActivity  extends AppCompatActivity implements View.OnClick
     }
 
     /**
-     * listeners 초기화 메소드
+     * listeners 초기화 메소드.
      */
     private void initListeners() {
         appCompatButtonRegister.setOnClickListener(this);
