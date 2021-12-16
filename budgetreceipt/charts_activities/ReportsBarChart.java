@@ -223,3 +223,4 @@ public class ReportsBarChart extends AppCompatActivity {
         return r;
     }
 }
+
