@@ -1313,4 +1313,4 @@ public class DocumentScannerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;
     }
-};
+}
